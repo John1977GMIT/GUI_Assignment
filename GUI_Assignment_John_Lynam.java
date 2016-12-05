@@ -150,7 +150,7 @@ public class GUI_Assignment_John_Lynam implements ActionListener {
 
 
         }
-        if (e.getSource() == mulButton) {
+        if (e.getSource() == mulButton) {// This is not working 
             int ans = 0;
 
             ans *= Integer.parseInt(EnterNumber1.getText());
