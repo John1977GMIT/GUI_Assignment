@@ -73,7 +73,9 @@ public class GUI_Assignment_John_Lynam implements ActionListener {
         EnterNumber1 = new JTextField(15);
         EnterNumber2 = new JTextField(15);
         addButton = new JButton("Add");
+        addButton.addActionListener(this);
         mulButton = new JButton("Multiply");
+        mulButton.addActionListener(this);
         clearButton = new JButton("Clear");
         LoadFileButton = new JButton("Load File");
         LoadFileButton.addActionListener(this);
@@ -109,8 +111,9 @@ public class GUI_Assignment_John_Lynam implements ActionListener {
         buttonPanel.add(clearButton);
         buttonPanel.add(LoadFileButton);
 
-        CalculationPanel.add(new JScrollPane(textArea));
-        TextPanel.add(tabbedPane);
+        CalculationPanel.add(tabbedPane);
+        TextPanel.add(new JScrollPane(textArea));
+
 
         GridLayout grid = new GridLayout(0,2);
         backGroundPanel.setLayout(grid);
@@ -141,35 +144,23 @@ public class GUI_Assignment_John_Lynam implements ActionListener {
         if (e.getSource() == addButton) {
             int ans = 0;
 
-            JTextField N1 = new JTextField("");//trying to cast string to int, not working
-            String EnterNumber1 = N1.getText();
-            int num1 = Integer.parseInt(text);
+            ans += Integer.parseInt(EnterNumber1.getText());
+            ans += Integer.parseInt(EnterNumber2.getText());
+            textArea.setText(String.valueOf(ans));
 
-            JTextField N2 = new JTextField("");
-            String EnterNumber2 = N2.getText();
-            int num2 = Integer.parseInt(text);
-
-            ans = num1 + num2;
-           // return ans;
 
         }
         if (e.getSource() == mulButton) {
-           /* int ans = 0;
+            int ans = 0;
 
-            JTextField N1 = new JTextField("");//trying to cast string to int, not working
-            String EnterNumber1 = N1.getText();
-            int num1 = Integer.parseInt(EnterNumber1);
+            ans *= Integer.parseInt(EnterNumber1.getText());
+            ans *= Integer.parseInt(EnterNumber2.getText());
+            textArea.setText(String.valueOf(ans));
 
-            JTextField N2 = new JTextField("");
-            String EnterNumber2 = N2.getText();
-            int num2 = Integer.parseInt(EnterNumber2);
-
-            num1 * num2 = ans;
-            return ans;*/
 
         }
 
-        if (e.getSource() == LoadFileButton) {
+        if (e.getSource() == LoadFileButton) {// LoadFile Swing worker
             fc = new JFileChooser();
             int returnVal = fc.showOpenDialog(textArea);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -202,3 +193,4 @@ public class GUI_Assignment_John_Lynam implements ActionListener {
         }
     }
 }
+
